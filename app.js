@@ -1,20 +1,36 @@
 const http = require('http');
 const fs = require('fs');
-const port = 3000;
+const os = require('os');
+
+console.log(os.cpus());
+console.log(os.arch());
+console.log(os.freemem());
+const port = process.env.PORT || 3000;
 
 const server = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type' : 'text/html'});
-    fs.readFile('index.html', function(error, data){
-    if(error){
-        res.writeHead(404);
-        res.write('Error: File Not Found');
+   if(req.url === '/'){
+    fs.readFile(path.join(__dirname,'index.html'), (error,content) =>{
+        if(error) throw error;
+        res.writeHead(200,{'Content-Type' : 'text/html'});
+        res.end(content);
+    });
+
+   };
+
+   if(req.url === '/api/users'){
+    const users = [
+        {name: 'Bob Smith', age: 40},
+        {name: 'John Doe', age: 30}
+
+      
+
+    ];
+    res.writeHead(200,{'Content-Type' : 'application/json'});
+    res.end(JSON.stringify(users));
 
 
-    }else{
-        res.write(data);
-    }
-    res.end();
-     });
+
+   }
 });
 
 server.listen(port, function(error){

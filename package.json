@@ -1,0 +1,23 @@
+{
+  "name": "simpleserver",
+  "version": "1.0.0",
+  "description": "A space to practice http requests using node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/WillMay09/simpleServer.git"
+  },
+  "author": "William Mayhood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WillMay09/simpleServer/issues"
+  },
+  "homepage": "https://github.com/WillMay09/simpleServer#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  }
+}
